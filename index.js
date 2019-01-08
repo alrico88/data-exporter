@@ -16,9 +16,6 @@ class Exporter {
 	 * @memberof Exporter
 	 */
 	constructor(data, format, filename) {
-		this.data = data;
-		this.format = format;
-		this.filename = filename;
 
 		/**
 		 * Converts JSON to CSV
@@ -38,6 +35,13 @@ class Exporter {
 				throw err;
 			}
 		};
+		this.data = data;
+		this.format = format;
+		this.filename = filename;
+		this.mime = {
+			json: 'text/json;charset=utf-8',
+			csv: 'text/csv;charset=utf-8',
+		};
 	}
 
 	/**
@@ -46,23 +50,20 @@ class Exporter {
 	 * @memberof Exporter
 	 */
 	save() {
-		let blob, fileContent;
-		switch (this.format) {
-			case 'json':
-				fileContent = JSON.stringify(this.content, null, 2);
-				blob = new Blob([fileContent], {
-					type: 'text/json;charset=utf-8',
-				});
-				break;
-			case 'csv':
-				blob = new Blob([this.content], {
-					type: 'text/csv;charset=utf-8',
-				});
-				break;
-			default:
-				throw new Error('invalid format');
+		try {
+			let content =
+				this.format === 'json'
+					? JSON.stringify(this.data, null, 2)
+					: this.convertToCsv(this.data);
+			saveAs(
+				new Blob([content], {
+					type: this.mime[this.format],
+				}),
+				`${this.filename}.${this.format}`
+			);
+		} catch (err) {
+			throw err;
 		}
-		saveAs(blob, `${this.filename}.${this.format}`);
 	}
 }
 
