@@ -1,5 +1,5 @@
-const saveAs = require('file-saver').saveAs;
-const parse = require('json2csv').parse;
+const {saveAs} = require('file-saver');
+const {parse} = require('json2csv');
 
 /**
  * Exporter class
