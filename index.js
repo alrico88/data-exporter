@@ -8,6 +8,8 @@ const {parse} = require('json2csv');
 export const MIMES = {
   csv: 'text/csv;charset=utf-8',
   json: 'text/json;charset=utf-8',
+  txt: 'text/plain',
+  rtf: 'application/rtf',
 };
 
 /**
@@ -18,6 +20,8 @@ export const MIMES = {
 export const EXTENSIONS = {
   csv: 'csv',
   json: 'json',
+  txt: 'txt',
+  rtf: 'rtf',
 };
 
 /**
