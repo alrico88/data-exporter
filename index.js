@@ -100,10 +100,11 @@ export default class Exporter {
    * Shortcut to save as JSON
    * Processes JSON directly
    *
+   * @param {boolean} [pretty=false] Whether the output should be nicely displayed instead of one line
    * @memberof Exporter
    */
-  saveJSON() {
-    this.data = Exporter.stringifyJSON(this.data);
+  saveJSON(pretty = false) {
+    this.data = Exporter.stringifyJSON(this.data, pretty);
     this.save();
   }
 
