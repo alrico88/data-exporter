@@ -1,6 +1,6 @@
 {
   "name": "data-exporter",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "description": "Allows to save any content to disk, as JSON, CSV or any other desired format, from the browser",
   "main": "index.js",
   "author": "Alberto Rico",
