@@ -5,7 +5,7 @@ const {parse} = require('json2csv');
  * @enum
  * @export
  */
-export const MIMES = {
+const MIMES = {
   csv: 'text/csv;charset=utf-8',
   json: 'text/json;charset=utf-8',
   txt: 'text/plain',
@@ -17,7 +17,7 @@ export const MIMES = {
  * @export
  */
 // eslint-disable-next-line no-unused-vars
-export const EXTENSIONS = {
+const EXTENSIONS = {
   csv: 'csv',
   json: 'json',
   txt: 'txt',
@@ -30,7 +30,7 @@ export const EXTENSIONS = {
  * @export
  * @class Exporter
  */
-export default class Exporter {
+class Exporter {
 
   /**
    *Creates an instance of Exporter.
@@ -123,3 +123,7 @@ export default class Exporter {
     this.save();
   }
 }
+
+module.exports = Exporter;
+module.exports.MIMES = MIMES;
+module.exports.EXTENSIONS = EXTENSIONS;
